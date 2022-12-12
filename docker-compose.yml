@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+  flask:
+    container_name: my_devops_app
+    build:
+      context: .
+    entrypoint: ./entrypoint.sh
+    volumes:
+      - ./devops_app:/app/devops_app
+    ports:
+      - "5001:5001"
+
+#  mongo:
+#    image: mongo:latest
+#    volumes:
+#      - ./db_volume:/data/db
+#    ports:
+#      - "27017:27017"
+#  nginx:
+#    container_name: nginx
+#    build:
+#      context: .
+#      dockerfile: Docker.nginx
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./certs/:/etc/nginx/certs
+#    networks:
+#      - app-network
+#    restart: unless-stopped
