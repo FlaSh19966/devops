@@ -1,0 +1,12 @@
+FROM nginx:alpine
+
+#RUN apk add --no-cache openssl
+#RUN mkdir -p /etc/nginx/ssl/
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+EXPOSE 443
+
+CMD ["nginx", "-g", "daemon off;"]
