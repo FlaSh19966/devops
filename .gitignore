@@ -1,0 +1,14 @@
+
+.idea
+*.iml
+out
+gen
+*.pyc
+__pycache__
+/*.zip
+deploy.sh
+logger.txt
+nginx/certs/
+/test*.py
+config/
+venv/
