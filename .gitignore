@@ -9,6 +9,7 @@ __pycache__
 deploy.sh
 logger.txt
 nginx/certs/
+certs
 /test*.py
 config/
 venv/

@@ -3,6 +3,7 @@ services:
   flask:
     build:
       context: .
+      dockerfile: Dockerfile-flask
     entrypoint: ./entrypoint.sh
     volumes:
       - ./devops_app:/app/devops_app
@@ -18,7 +19,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: Dockerfile-nginx
     ports:
       - "8443:80"
     volumes:
