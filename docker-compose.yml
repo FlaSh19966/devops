@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-flask
-    entrypoint: ./entrypoint.sh
     volumes:
       - ./devops_app:/app/devops_app
     ports:
