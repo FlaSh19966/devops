@@ -1,28 +1,58 @@
-
+import datetime
 
 from flask import Flask, make_response, jsonify
 from flask_restful import Resource, Api
+from flask_pymongo import PyMongo
+
 
 app = Flask(__name__)
 api = Api(app)
+
+app.config["MONGO_URI"] = "mongodb://mongo-service:27017/dev"
+
+mongo = PyMongo(app)
+db = mongo.db
 
 
 class Default(Resource):
     def get(self):
         print('Default endpoint')
-        return make_response(jsonify({'MSG': 'This is default endpoint'}), 200)
+        endpoint_name = 'default'
+        try:
+            db.test.insert_one({'endpoint_name': endpoint_name, 'datetime': datetime.datetime.now()})
+            data = list(db.test.find({}, {'_id': 0}))
+            return make_response(jsonify({'MSG': 'This is default endpoint',
+                                          'data': data}), 200)
+        except Exception as e:
+            return make_response(jsonify({'MSG': 'This is default endpoint exception',
+                                          'error': str(e)}), 500)
 
 
 class FlaskHealthCheck(Resource):
     def get(self):
         print('flask-health-check hit')
-        return make_response(jsonify({'MSG': 'This is Flask health check'}), 200)
-
+        endpoint_name = 'flask'
+        try:
+            db.test.insert_one({'endpoint_name': endpoint_name, 'datetime': datetime.datetime.now()})
+            data = list(db.test.find({}, {'_id': 0}))
+            return make_response(jsonify({'MSG': 'flask-health-check hit',
+                                          'data': data}), 200)
+        except Exception as e:
+            return make_response(jsonify({'MSG': 'flask-health-check hit exception',
+                                          'error': str(e)}), 500)
 
 class NginxHealthCheck(Resource):
     def get(self):
         print('nginx-health-check hit')
-        return make_response(jsonify({'MSG': 'This is nginx health check'}), 200)
+        endpoint_name = 'nginx'
+        try:
+            db.test.insert_one({'endpoint_name': endpoint_name, 'datetime': datetime.datetime.now()})
+            data = list(db.test.find({}, {'_id': 0}))
+            return make_response(jsonify({'MSG': 'nginx-health-check hit',
+                                          'data': data}), 200)
+        except Exception as e:
+            return make_response(jsonify({'MSG': 'nginx-health-check hit exception',
+                                          'error': str(e)}), 500)
 
 
 api.add_resource(Default, '/')

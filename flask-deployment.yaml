@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: flask:1.0.1
+        image: flask:1.0.8
         imagePullPolicy: Never
         ports:
         - containerPort: 5001
