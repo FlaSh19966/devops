@@ -22,7 +22,7 @@ class FlaskHealthCheck(Resource):
 class NginxHealthCheck(Resource):
     def get(self):
         print('nginx-health-check hit')
-        return make_response(jsonify({'MSG': 'This is nginx health check 3.0'}), 200)
+        return make_response(jsonify({'MSG': 'This is nginx health check 4.0'}), 200)
 
 
 api.add_resource(Default, '/')
