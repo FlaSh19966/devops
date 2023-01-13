@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+     - "8082:8080"
+     - "50000:50000"
+    container_name: jenkins
+    volumes:
+      - /home/vimalesh/Learning/devops/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+#docker exec 8b4873efadf8 cat /var/jenkins_home/secrets/initialAdminPassword
+#d9a1c05311ea4931817cde7924f7e78e

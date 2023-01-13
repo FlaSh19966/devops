@@ -13,3 +13,4 @@ certs
 /test*.py
 config/
 venv/
+/jenkins*

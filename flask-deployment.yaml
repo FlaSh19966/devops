@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
       - name: flask
-        image: flask:1.0.8
+        image: flask:1.0.12
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongo-service:27017/dev"
         imagePullPolicy: Never
         ports:
         - containerPort: 5001
