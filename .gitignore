@@ -12,3 +12,4 @@ nginx/certs/
 /test*.py
 config/
 venv/
+/jenkins_configuration
