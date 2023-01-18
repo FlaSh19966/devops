@@ -10,7 +10,7 @@ pipeline {
         }
         stage('front-end') {
             steps {
-                sh 'ls'
+                sh 'echo "hello"'
             }
         }
     }
