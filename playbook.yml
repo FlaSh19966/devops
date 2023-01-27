@@ -1,0 +1,29 @@
+---
+- name: sample_book
+  hosts: webservers
+  remote_user: root
+  become: true
+  vars:
+    temp_var: temp_value
+  tasks:
+    - name: print hello world
+      command: echo hello world
+      ignore_errors: True
+    - name: update system
+      command: apt-get update
+      ignore_errors: True
+    - name: check nginx for latest
+      apt:
+        name: nginx
+        state: latest
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes  # if you want to also enable nginx
+    - name: curl
+      apt:
+        name: curl
+        state: latest
+    - name: Install Docker
+      ansible.builtin.shell: cd ~ && curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh

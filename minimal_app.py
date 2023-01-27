@@ -18,9 +18,8 @@ class Default(Resource):
     def get(self):
         print('Default endpoint')
         endpoint_name = 'default'
-        name = request
         try:
-            db.test.insert_one({'name': name, 'datetime': datetime.datetime.now()})
+            db.test.insert_one({'name': endpoint_name, 'datetime': datetime.datetime.now()})
             data = list(db.test.find({}, {'_id': 0}))
             return make_response(jsonify({'MSG': 'This is default endpoint',
                                           'data': data}), 200)
