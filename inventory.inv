@@ -18,8 +18,8 @@
 # Ex 2: A collection of hosts belonging to the 'webservers' group:
 
 [webservers]
-#192.168.29.168 ansible_ssh_user=vimalesh ansible_ssh_pass=dyinglight
-192.168.29.218 ansible_ssh_user=vimalesh ansible_ssh_pass=dyinglight
+192.168.29.168 ansible_ssh_user=vimalesh ansible_ssh_pass=dyinglight
+#192.168.29.218 ansible_ssh_user=vimalesh ansible_ssh_pass=dyinglight
 #192.168.29.226 ansible_ssh_user=shubham ansible_ssh_pass=avc
 ## beta.example.org
 ## 192.168.1.100
